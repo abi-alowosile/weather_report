@@ -17,9 +17,7 @@ def process_parquet_file (spark,csv_filepath,parquet_filepath):
     #return Dataframe in parquet format
     return spark.read.parquet(parquet_filepath)
 
-def weather_result(spark, csv_filepath, parquet_filepath):
-
-    parquetFile = process_parquet_file(spark,csv_filepath, parquet_filepath)
+def weather_result(spark, parquetFile):
 
     Max_ScreenTemperature = parquetFile.groupBy().agg(f.max(parquetFile.ScreenTemperature)).collect()[0][0]
 
@@ -50,6 +48,9 @@ if __name__ == "__main__":
         .appName("Weather result")\
         .getOrCreate()
 
-    weather_result(spark,csv_filepath="./data/weather.*.csv", parquet_filepath = "./data/weather.parquet")
+
+    parquetFile = process_parquet_file(spark,csv_filepath="./data/weather.*.csv", parquet_filepath = "./data/weather.parquet")
+
+    weather_result(spark, parquetFile)
 
     spark.stop()
