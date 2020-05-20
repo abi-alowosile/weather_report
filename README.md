@@ -238,7 +238,7 @@ for k,v in result_dict.items():
 
 
 ```python
-result_row = result_sql.collect()[0]
+result_row = result_pF.collect()[0]
 ```
 
 
