@@ -1,10 +1,19 @@
 # Weather Result
 
+## Instructions
+Convert the weather data into parquet format. Set the raw group to appropriate value you see fit for this data. The converted data should be queryable to answer the following question.
+- Which date was the hottest day?
+- What was the temperature on that day? 
+- In which region was the hottest day?
+
+## Assumptions 
+Records having ScreenTemperature values = "-99" are not relevant and are not a limiting factor for the calculation of the hottest temperature. 
+
 ## How to run
 
 If you have PySpark pip installed into your environment (e.g., pip install pyspark), you can run your application with the regular Python interpreter or use the provided ‘spark-submit’ as you prefer by downloading and copying "weather_result-master" in YOUR_SPARK_HOME/bin/
 
-    # Use the Python interpreter to run your application
+    # Use the Python interpreter to run your application from weather_result-master
     $ python weather_result.py
     
 
